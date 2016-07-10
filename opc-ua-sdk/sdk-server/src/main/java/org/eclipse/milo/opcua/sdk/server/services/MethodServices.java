@@ -6,9 +6,9 @@
  * and Eclipse Distribution License v1.0 which accompany this distribution.
  *
  * The Eclipse Public License is available at
- * 	http://www.eclipse.org/legal/epl-v10.html
+ *   http://www.eclipse.org/legal/epl-v10.html
  * and the Eclipse Distribution License is available at
- * 	http://www.eclipse.org/org/documents/edl-v10.html.
+ *   http://www.eclipse.org/org/documents/edl-v10.html.
  */
 
 package org.eclipse.milo.opcua.sdk.server.services;
@@ -57,9 +57,7 @@ public class MethodServices implements MethodServiceSet {
             .map(PendingCall::new)
             .collect(Collectors.toList());
 
-        /*
-         * Group by namespace and call asynchronously for each.
-         */
+        // Group by namespace and call asynchronously for each.
 
         Map<UShort, List<PendingCall>> byNamespace = pendingCalls.stream()
             .collect(Collectors.groupingBy(pending -> pending.getInput().getMethodId().getNamespaceIndex()));
@@ -87,9 +85,7 @@ public class MethodServices implements MethodServiceSet {
             });
         });
 
-        /*
-         * When all PendingCalls have been completed send a CallResponse with the values.
-		 */
+        // When all PendingCalls have been completed send a CallResponse with the values.
 
         List<CompletableFuture<CallMethodResult>> futures = pendingCalls.stream()
             .map(PendingCall::getFuture)

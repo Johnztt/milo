@@ -6,9 +6,9 @@
  * and Eclipse Distribution License v1.0 which accompany this distribution.
  *
  * The Eclipse Public License is available at
- * 	http://www.eclipse.org/legal/epl-v10.html
+ *   http://www.eclipse.org/legal/epl-v10.html
  * and the Eclipse Distribution License is available at
- * 	http://www.eclipse.org/org/documents/edl-v10.html.
+ *   http://www.eclipse.org/org/documents/edl-v10.html.
  */
 
 package org.eclipse.milo.opcua.sdk.server.services;
@@ -154,7 +154,9 @@ public class ViewServices implements ViewServiceSet {
     }
 
     @Override
-    public void onRegisterNodes(ServiceRequest<RegisterNodesRequest, RegisterNodesResponse> service) throws UaException {
+    public void onRegisterNodes(
+        ServiceRequest<RegisterNodesRequest, RegisterNodesResponse> service) throws UaException {
+
         OpcUaServer server = service.attr(ServiceAttributes.SERVER_KEY).get();
 
         RegisterNodesRequest request = service.getRequest();
@@ -176,7 +178,9 @@ public class ViewServices implements ViewServiceSet {
     }
 
     @Override
-    public void onUnregisterNodes(ServiceRequest<UnregisterNodesRequest, UnregisterNodesResponse> service) throws UaException {
+    public void onUnregisterNodes(
+        ServiceRequest<UnregisterNodesRequest, UnregisterNodesResponse> service) throws UaException {
+
         OpcUaServer server = service.attr(ServiceAttributes.SERVER_KEY).get();
 
         UnregisterNodesRequest request = service.getRequest();

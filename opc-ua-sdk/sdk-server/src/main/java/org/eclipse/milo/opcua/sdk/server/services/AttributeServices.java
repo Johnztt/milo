@@ -6,9 +6,9 @@
  * and Eclipse Distribution License v1.0 which accompany this distribution.
  *
  * The Eclipse Public License is available at
- * 	http://www.eclipse.org/legal/epl-v10.html
+ *   http://www.eclipse.org/legal/epl-v10.html
  * and the Eclipse Distribution License is available at
- * 	http://www.eclipse.org/org/documents/edl-v10.html.
+ *   http://www.eclipse.org/org/documents/edl-v10.html.
  */
 
 package org.eclipse.milo.opcua.sdk.server.services;
@@ -93,9 +93,7 @@ public class AttributeServices implements AttributeServiceSet {
             futures.add(pending.getFuture());
         }
 
-		/*
-         * Group PendingReads by namespace and call read for each.
-		 */
+        // Group PendingReads by namespace and call read for each.
 
         Map<UShort, List<PendingRead>> byNamespace = pendingReads.stream()
             .collect(groupingBy(pending -> pending.getInput().getNodeId().getNamespaceIndex()));
@@ -129,9 +127,7 @@ public class AttributeServices implements AttributeServiceSet {
             });
         });
 
-		/*
-         * When all PendingReads have been completed send a ReadResponse with the values.
-		 */
+        // When all PendingReads have been completed send a ReadResponse with the values.
 
         FutureUtils.sequence(futures).thenAcceptAsync(values -> {
             ResponseHeader header = service.createResponseHeader();
