@@ -24,7 +24,6 @@ import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
 import org.eclipse.milo.opcua.sdk.server.Session;
 import org.eclipse.milo.opcua.sdk.server.api.MethodServices.CallContext;
 import org.eclipse.milo.opcua.sdk.server.api.Namespace;
-import org.eclipse.milo.opcua.stack.core.util.FutureUtils;
 import org.eclipse.milo.opcua.sdk.server.util.PendingCall;
 import org.eclipse.milo.opcua.stack.core.application.services.MethodServiceSet;
 import org.eclipse.milo.opcua.stack.core.application.services.ServiceRequest;
@@ -35,6 +34,7 @@ import org.eclipse.milo.opcua.stack.core.types.structured.CallMethodResult;
 import org.eclipse.milo.opcua.stack.core.types.structured.CallRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.CallResponse;
 import org.eclipse.milo.opcua.stack.core.types.structured.ResponseHeader;
+import org.eclipse.milo.opcua.stack.core.util.FutureUtils;
 
 import static org.eclipse.milo.opcua.stack.core.util.ConversionUtil.a;
 

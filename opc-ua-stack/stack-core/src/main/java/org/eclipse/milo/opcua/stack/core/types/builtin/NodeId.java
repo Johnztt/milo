@@ -150,10 +150,10 @@ public final class NodeId {
 
     public boolean isNull() {
         return namespaceIndex.intValue() == 0 &&
-            (NULL_NUMERIC.equals(this)
-                || NULL_STRING.equals(this)
-                || NULL_GUID.equals(this)
-                || NULL_OPAQUE.equals(this));
+            (NULL_NUMERIC.equals(this) ||
+                NULL_STRING.equals(this) ||
+                NULL_GUID.equals(this) ||
+                NULL_OPAQUE.equals(this));
     }
 
     public boolean isNotNull() {
@@ -215,15 +215,21 @@ public final class NodeId {
     }
 
     private static final Pattern NS_INT = Pattern.compile("ns=(\\d*);i=(\\d*)");
+
     private static final Pattern NONE_INT = Pattern.compile("i=(\\d*)");
 
     private static final Pattern NS_STRING = Pattern.compile("ns=(\\d*);s=(.*)");
+
     private static final Pattern NONE_STRING = Pattern.compile("s=(.*)");
 
-    private static final Pattern NS_GUID = Pattern.compile("ns=(\\d*);g=([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})");
-    private static final Pattern NONE_GUID = Pattern.compile("g=([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})");
+    private static final Pattern NS_GUID = Pattern.compile(
+        "ns=(\\d*);g=([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})");
+
+    private static final Pattern NONE_GUID = Pattern.compile(
+        "g=([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})");
 
     private static final Pattern NS_OPAQUE = Pattern.compile("ns=(\\d*);b=([0-9a-zA-Z+/=]*)");
+
     private static final Pattern NONE_OPAQUE = Pattern.compile("b=([0-9a-zA-Z+/=]*)");
 
     public static NodeId parse(@Nonnull String s) {
