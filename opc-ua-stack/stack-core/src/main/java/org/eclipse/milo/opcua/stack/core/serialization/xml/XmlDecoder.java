@@ -86,7 +86,7 @@ public class XmlDecoder implements UaDecoder {
     public void skipElement() throws XMLStreamException {
         streamReader.nextTag();
     }
-    
+
     @Override
     public Boolean decodeBoolean(String field) throws UaSerializationException {
         return parseElement(field, Boolean::valueOf);
@@ -226,24 +226,24 @@ public class XmlDecoder implements UaDecoder {
 
     @Override
     public ExpandedNodeId decodeExpandedNodeId(String field) {
-      requireNextStartElement(field);
+        requireNextStartElement(field);
 
-      ExpandedNodeId nodeId;
+        ExpandedNodeId nodeId;
 
-      if (nextStartElement("Identifier")) {
-          try {
-              String text = streamReader.getElementText();
-              nodeId = ExpandedNodeId.parse(text);
+        if (nextStartElement("Identifier")) {
+            try {
+                String text = streamReader.getElementText();
+                nodeId = ExpandedNodeId.parse(text);
 
-              requireNextEndElement(field);
-          } catch (XMLStreamException e) {
-              throw new UaSerializationException(StatusCodes.Bad_DecodingError, e);
-          }
-      } else {
-          nodeId = ExpandedNodeId.NULL_VALUE;
-      }
+                requireNextEndElement(field);
+            } catch (XMLStreamException e) {
+                throw new UaSerializationException(StatusCodes.Bad_DecodingError, e);
+            }
+        } else {
+            nodeId = ExpandedNodeId.NULL_VALUE;
+        }
 
-      return nodeId;
+        return nodeId;
     }
 
     @Override
@@ -293,7 +293,7 @@ public class XmlDecoder implements UaDecoder {
         if (nextStartElement(field)) {
             String locale = LocalizedText.NULL_VALUE.getLocale();
             String text = LocalizedText.NULL_VALUE.getText();
-            
+
             if (nextStartElement("Locale")) {
                 locale = readElementText().orElse(LocalizedText.NULL_VALUE.getLocale());
             }

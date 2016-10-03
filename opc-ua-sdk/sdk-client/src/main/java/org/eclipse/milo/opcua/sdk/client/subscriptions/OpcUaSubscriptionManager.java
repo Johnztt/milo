@@ -529,7 +529,8 @@ public class OpcUaSubscriptionManager implements UaSubscriptionManager {
                             );
 
                             subscription.getNotificationListeners().forEach(
-                                listener -> listener.onKeepAliveNotification(subscription, notificationMessage.getPublishTime())
+                                listener -> listener.onKeepAliveNotification(
+                                    subscription, notificationMessage.getPublishTime())
                             );
                         } else {
                             if (!subscription.getNotificationListeners().isEmpty()) {
@@ -537,7 +538,9 @@ public class OpcUaSubscriptionManager implements UaSubscriptionManager {
                                     ImmutableList.builder();
 
                                 for (MonitoredItemNotification n : dcn.getMonitoredItems()) {
-                                    UaMonitoredItem item = subscription.getItemsByClientHandle().get(n.getClientHandle());
+                                    UaMonitoredItem item = subscription
+                                        .getItemsByClientHandle().get(n.getClientHandle());
+
                                     if (item != null) {
                                         builder.add(new Tuple2<>(item, n.getValue()));
                                     }
